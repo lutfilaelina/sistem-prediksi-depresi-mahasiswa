@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arogya Mind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        purple: {
+                            600: '#7e22ce',
+                            700: '#6b21a8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        function scrollToForm() {
+            document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        window.onload = function () {
+            const hash = window.location.hash;
+            if (hash === "#hasil") {
+                const section = document.getElementById("result-section");
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        };
+    </script>
+</head>
+
+<header class="bg-white shadow-sm fixed top-0 left-0 w-full z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+        <a href="#" class="text-xl font-bold text-purple-700">Arogya Mind</a>
+        <nav class="space-x-4 text-sm">
+            <a href="#form-section" class="text-gray-600 hover:text-purple-600 transition">Mulai Tes</a>
+            <a href="#result-section" class="text-gray-600 hover:text-purple-600 transition">Hasil</a>
+            <a href="#tips-section" class="text-gray-600 hover:text-purple-600 transition">Tips Sehat Mental</a>
+        </nav>
+    </div>
+</header>
+
+<body class="pt-20 min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
+
+    <section class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-cover bg-center" style="background-image: url('{{ url_for('static', filename='images/arogya.png') }}');">
+        <div class="relative z-10 text-center max-w-4xl mx-auto">
+            <div class="mb-8">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-purple-600 rounded-full mb-6">
+                    <i class="fas fa-brain text-white text-3xl leading-none"></i>
+                </div>
+            </div>
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+                <span class="bg-gradient-to-r from-purple-800 to-blue-800 bg-clip-text text-transparent">Arogya Mind</span>
+                <br>
+                <span class="text-gray-800"><i class="text-xl sm:text-2xl">"Deteksi Dini, Pulihkan Diri"</i></span>
+            </h1>
+            <p class="text-xl sm:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Sistem AI canggih untuk mendeteksi risiko depresi dengan akurasi tinggi menggunakan 3 model machine learning
+            </p>
+            <button onclick="scrollToForm()" class="inline-flex items-center px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                Mulai Tes Sekarang
+                <svg class="ml-2 w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <section id="form-section" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Formulir Penilaian Risiko</h2>
+                <p class="text-lg text-gray-600">Isi data berikut dengan jujur untuk mendapatkan hasil yang akurat</p>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-2xl p-8 sm:p-12">
+    <form method="post" action="/predict#hasil" class="space-y-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+
+        <div class="space-y-3">
+            <label class="block text-sm font-semibold text-gray-700">Jenis Kelamin</label>
+            <div class="custom-select-wrapper relative">
+                <input type="hidden" name="gender" value="Female" required>
+                <div class="custom-select-trigger form-input flex justify-between items-center cursor-pointer">
+                    <span class="select-display-text">Perempuan</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <ul class="custom-select-options absolute z-20 w-full mt-2 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
+                    <li class="custom-select-option px-4 py-3 cursor-pointer hover:bg-gray-100 bg-purple-100 font-semibold" data-value="Female">Perempuan</li>
+                    <li class="custom-select-option px-4 py-3 cursor-pointer hover:bg-gray-100" data-value="Male">Laki-laki</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="space-y-3">
+            <label class="block text-sm font-semibold text-gray-700">Usia</label>
+            <input type="number" name="age" min="13" max="100" class="form-input" placeholder="Masukkan usia Anda" required>
+        </div>
+
+        <div class="space-y-3">
+            <label class="block text-sm font-semibold text-gray-700">Tekanan Akademik (1-5)</label>
+            <input type="hidden" name="academic_pressure" value="3" required>
+            <div class="custom-slider-container flex items-center gap-4">
+                <input type="range" min="1" max="5" value="3" step="1" class="custom-slider">
+                <div class="slider-value-display">3</div>
+            </div>
+            <div class="flex justify-between text-xs text-gray-500 -mt-2 px-1">
+                <span>Rendah</span>
+                <span class="opacity-0 md:opacity-100">Sedang</span>
+                <span>Sangat Tinggi</span>
+            </div>
+        </div>
+        
+        <div class="space-y-3">
+            <label class="block text-sm font-semibold text-gray-700">Kepuasan Studi (1-5)</label>
+            <input type="hidden" name="study_satisfaction" value="3" required>
+            <div class="custom-slider-container flex items-center gap-4">
+                <input type="range" min="1" max="5" value="3" step="1" class="custom-slider">
+                <div class="slider-value-display">3</div>
+            </div>
+            <div class="flex justify-between text-xs text-gray-500 -mt-2 px-1">
+                <span>Rendah</span>
+                <span class="opacity-0 md:opacity-100">Sedang</span>
+                <span>Sangat Tinggi</span>
+            </div>
+        </div>
+
+        <div class="space-y-3">
+            <label class="block text-sm font-semibold text-gray-700">Durasi Tidur</label>
+            <div class="custom-select-wrapper relative">
+                <input type="hidden" name="sleep_duration" value="Less than 5 hours" required>
+                <div class="custom-select-trigger form-input flex justify-between items-center cursor-pointer">
+                    <span class="select-display-text">Kurang dari 5 jam</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <ul class="custom-select-options absolute z-20 w-full mt-2 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
+                    <li class="custom-select-option px-4 py-3 cursor-pointer hover:bg-gray-100 bg-purple-100 font-semibold" data-value="Less than 5 hours">Kurang dari 5 jam</li>
+                    <li class="custom-select-option px-4 py-3 cursor-pointer hover:bg-gray-100" data-value="5-6 hours">5-6 jam</li>
+                    <li class="custom-select-option px-4 py-3 cursor-pointer hover:bg-gray-100" data-value="7-8 hours">7-8 jam</li>
+                    <li class="custom-select-option px-4 py-3 cursor-pointer hover:bg-gray-100" data-value="More than 8 hours">Lebih dari 8 jam</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="space-y-3">
+            <label class="block text-sm font-semibold text-gray-700">Kebiasaan Makan</label>
+             <div class="custom-select-wrapper relative">
+                <input type="hidden" name="dietary_habits" value="Healthy" required>
+                <div class="custom-select-trigger form-input flex justify-between items-center cursor-pointer">
+                    <span class="select-display-text">Sehat</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <ul class="custom-select-options absolute z-20 w-full mt-2 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
+                    <li class="custom-select-option px-4 py-3 cursor-pointer hover:bg-gray-100 bg-purple-100 font-semibold" data-value="Healthy">Sehat</li>
+                    <li class="custom-select-option px-4 py-3 cursor-pointer hover:bg-gray-100" data-value="Moderate">Sedang</li>
+                    <li class="custom-select-option px-4 py-3 cursor-pointer hover:bg-gray-100" data-value="Unhealthy">Tidak Sehat</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="space-y-3">
+            <label class="block text-sm font-semibold text-gray-700">Pernah Memiliki Pikiran Bunuh Diri?</label>
+            <div class="custom-select-wrapper relative">
+                <input type="hidden" name="suicidal_thoughts" value="No" required>
+                <div class="custom-select-trigger form-input flex justify-between items-center cursor-pointer">
+                    <span class="select-display-text">Tidak</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <ul class="custom-select-options absolute z-20 w-full mt-2 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
+                    <li class="custom-select-option px-4 py-3 cursor-pointer hover:bg-gray-100 bg-purple-100 font-semibold" data-value="No">Tidak</li>
+                    <li class="custom-select-option px-4 py-3 cursor-pointer hover:bg-gray-100" data-value="Yes">Ya</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="space-y-3">
+            <label class="block text-sm font-semibold text-gray-700">Jam Belajar per Hari</label>
+            <input type="number" name="study_hours" class="form-input" placeholder="Contoh: 3" required min="0">
+        </div>
+        
+        <div class="space-y-3">
+            <label class="block text-sm font-semibold text-gray-700">Stres Finansial (1-5)</label>
+            <input type="hidden" name="financial_stress" value="3" required>
+            <div class="custom-slider-container flex items-center gap-4">
+                <input type="range" min="1" max="5" value="3" step="1" class="custom-slider">
+                <div class="slider-value-display">3</div>
+            </div>
+            <div class="flex justify-between text-xs text-gray-500 -mt-2 px-1">
+                <span>Rendah</span>
+                <span class="opacity-0 md:opacity-100">Sedang</span>
+                <span>Sangat Tinggi</span>
+            </div>
+        </div>
+        
+        <div class="space-y-3">
+            <label class="block text-sm font-semibold text-gray-700">Riwayat Keluarga dengan Gangguan Mental</label>
+            <div class="custom-select-wrapper relative">
+                <input type="hidden" name="family_history" value="No" required>
+                <div class="custom-select-trigger form-input flex justify-between items-center cursor-pointer">
+                    <span class="select-display-text">Tidak</span>
+                    <svg class="w-5 h-5 text-gray-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <ul class="custom-select-options absolute z-20 w-full mt-2 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
+                    <li class="custom-select-option px-4 py-3 cursor-pointer hover:bg-gray-100 bg-purple-100 font-semibold" data-value="No">Tidak</li>
+                    <li class="custom-select-option px-4 py-3 cursor-pointer hover:bg-gray-100" data-value="Yes">Ya</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="text-center pt-8">
+        <button type="submit" class="inline-flex items-center px-12 py-4 bg-gradient-to-r from-purple-700 to-black hover:from-purple-900 hover:to-gray-900 text-white font-bold text-lg rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+            <svg class="mr-3 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+            Prediksi Sekarang
+        </button>
+    </div>
+</form>
+
+            </div>
+        </div>
+    </section>
+
+    {% if results %}
+    <section id="result-section" class="mt-16 scroll-mt-32">
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-8">Hasil Prediksi AI</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-purple-500">
+                <h3 class="text-lg font-bold mb-2">Logistic Regression</h3>
+                <p class="text-xl font-semibold text-center {% if results.logistic.risk == 'Tidak Depresi' %}text-green-600{% else %}text-red-600{% endif %}">
+                    {{ results.logistic.risk }}
+                </p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-blue-500">
+                <h3 class="text-lg font-bold mb-2">K-Nearest Neighbors</h3>
+                <p class="text-xl font-semibold text-center {% if results.knn.risk == 'Tidak Depresi' %}text-green-600{% else %}text-red-600{% endif %}">
+                    {{ results.knn.risk }}
+                </p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-green-500">
+                <h3 class="text-lg font-bold mb-2">Random Forest</h3>
+                <p class="text-xl font-semibold text-center {% if results.random_forest.risk == 'Tidak Depresi' %}text-green-600{% else %}text-red-600{% endif %}">
+                    {{ results.random_forest.risk }}
+                </p>
+            </div>
+        </div>
+
+        {% if results.logistic.risk != 'Tidak Depresi' or results.knn.risk != 'Tidak Depresi' or results.random_forest.risk != 'Tidak Depresi' %}
+        <div class="mt-12 bg-purple-50 p-6 rounded-xl text-center border-l-4 border-purple-600 shadow-md max-w-2xl mx-auto">
+            <h4 class="text-lg font-semibold text-purple-700 mb-2">Semangat, kamu tidak sendiri 💜</h4>
+            <p class="text-gray-700 italic text-base">
+                "Tidak apa-apa merasa lelah. Yang penting, jangan menyerah. Hari esok selalu punya harapan baru."
+            </p>
+            <p class="text-sm text-gray-500 mt-3">Jika kamu butuh bantuan, jangan ragu untuk bercerita ke orang terdekat atau tenaga profesional.</p>
+        </div>
+        {% else %}
+        <div class="mt-12 bg-green-50 p-6 rounded-xl text-center border-l-4 border-green-500 shadow-md max-w-2xl mx-auto">
+            <h4 class="text-lg font-semibold text-green-700 mb-2">Kamu Hebat! 🌟</h4>
+            <p class="text-gray-700 italic text-base">
+                "Terus jaga kesehatan mentalmu. Pikiran yang tenang adalah kekuatan besar yang kamu miliki."
+            </p>
+            <p class="text-sm text-gray-500 mt-3">Tetap terhubung dengan orang-orang yang membuatmu bahagia dan lakukan hal-hal yang kamu cintai!</p>
+        </div>
+        {% endif %}
+    </section>
+    {% endif %}
+
+    <section id="tips-section" class="mt-24 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Tips Menjaga Kesehatan Mental</h2>
+            <p class="text-gray-600 mb-8">Berikut beberapa langkah yang bisa kamu lakukan untuk menjaga kesehatan mental dan mencegah depresi:</p>
+            <div class="grid md:grid-cols-2 gap-6 text-left">
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-400">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">1. Cukup Tidur</h3>
+                    <p class="text-sm text-gray-600">Tidur 7-9 jam setiap malam sangat penting untuk keseimbangan emosi dan pikiran.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-400">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">2. Olahraga Teratur</h3>
+                    <p class="text-sm text-gray-600">Aktivitas fisik seperti jalan kaki atau yoga bisa meningkatkan hormon kebahagiaan.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-purple-400">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">3. Bicara dengan Orang Terpercaya</h3>
+                    <p class="text-sm text-gray-600">Jangan pendam perasaan sendiri. Bercerita dapat mengurangi beban pikiran.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-yellow-400">
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">4. Kurangi Tekanan Akademik</h3>
+                    <p class="text-sm text-gray-600">Atur jadwal belajar dan istirahat seimbang. Jangan terlalu memaksakan diri.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="mt-20 bg-white text-center py-6 text-sm text-gray-500 border-t">
+        © {{ current_year if current_year else "2025" }} Cek Depresi AI — Dibuat oleh Kelompok 5
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
