@@ -208,11 +208,14 @@ Proyek ini dibuat sebagai implementasi penerapan Machine Learning untuk klasifik
 
 ## Pengembang
 
-Lutfi Laeli Nur Afiyah
-Intan Komalasari 
-Moh. Arif Prasetyo 
-Nabe'ela Ayu Ning Tyas Zahra
-Muh Kharis Maulana Elhaq 
+## Pengembang
+
+1. Lutfi Laeli Nur Afiyah
+2. Intan Komalasari
+3. Moh. Arif Prasetyo
+4. Nabe'ela Ayu Ning Tyas Zahra
+5. Muh Kharis Maulana Elhaq
+
 
 ---
 
