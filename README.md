@@ -23,7 +23,7 @@ Halaman utama aplikasi yang menampilkan formulir input data mahasiswa untuk pros
 ### Contoh Pengujian
 
 <p align="center">
-  <img src="docs/images/preview-contoh-pengujian.png" width="700">
+  <img src="docs/images/preview-contoh-pengujian.png" width="500">
 </p>
 
 Contoh pengisian data mahasiswa yang digunakan sebagai input untuk proses prediksi.
@@ -31,7 +31,7 @@ Contoh pengisian data mahasiswa yang digunakan sebagai input untuk proses predik
 ### Hasil Prediksi
 
 <p align="center">
-  <img src="docs/images/preview-contoh-hasil-pengujian.png" width="700">
+  <img src="docs/images/preview-contoh-hasil-pengujian.png" width="500">
 </p>
 
 Halaman hasil prediksi yang menampilkan status risiko depresi berdasarkan data yang dimasukkan pengguna.
@@ -39,7 +39,7 @@ Halaman hasil prediksi yang menampilkan status risiko depresi berdasarkan data y
 ### Halaman Tips Kesehatan Mental
 
 <p align="center">
-  <img src="docs/images/preview-halaman-tips-kesehatan.png" width="700">
+  <img src="docs/images/preview-halaman-tips-kesehatan.png" width="500">
 </p>
 
 Halaman yang menyediakan informasi dan tips kesehatan mental sebagai bentuk edukasi bagi pengguna.
