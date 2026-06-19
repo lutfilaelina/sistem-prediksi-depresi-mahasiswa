@@ -10,6 +10,42 @@ Aplikasi ini dibangun menggunakan framework Flask dan mengimplementasikan model 
 
 ---
 
+## Tampilan Aplikasi
+
+### Antarmuka Utama
+
+<p align="center">
+  <img src="docs/images/preview-UI.png" width="700">
+</p>
+
+Halaman utama aplikasi yang menampilkan formulir input data mahasiswa untuk proses prediksi risiko depresi.
+
+### Contoh Pengujian
+
+<p align="center">
+  <img src="docs/images/preview-contoh-pengujian.png" width="700">
+</p>
+
+Contoh pengisian data mahasiswa yang digunakan sebagai input untuk proses prediksi.
+
+### Hasil Prediksi
+
+<p align="center">
+  <img src="docs/images/preview-contoh-hasil-pengujian.png" width="700">
+</p>
+
+Halaman hasil prediksi yang menampilkan status risiko depresi berdasarkan data yang dimasukkan pengguna.
+
+### Halaman Tips Kesehatan Mental
+
+<p align="center">
+  <img src="docs/images/preview-halaman-tips-kesehatan.png" width="700">
+</p>
+
+Halaman yang menyediakan informasi dan tips kesehatan mental sebagai bentuk edukasi bagi pengguna.
+
+---
+
 ## Latar Belakang
 
 Depresi merupakan salah satu gangguan kesehatan mental yang banyak dialami oleh mahasiswa akibat berbagai faktor seperti tekanan akademik, stres finansial, kurangnya kualitas tidur, serta kondisi sosial dan psikologis lainnya. Deteksi dini menjadi langkah penting untuk meningkatkan kesadaran dan membantu individu memperoleh penanganan yang tepat sejak awal.
